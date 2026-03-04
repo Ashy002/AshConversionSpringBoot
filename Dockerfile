@@ -1,13 +1,15 @@
-FROM maven:3.9.6-eclipse-temurin-21 AS build
+FROM eclipse-temurin:21-jdk-jammy as build
+COPY . .
+# On s'assure que le script mvnw est exécutable
+RUN chmod +x mvnw 
+RUN ./mvnw clean package -DskipTests
 
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-RUN mvn clean package -DskipTests
+# Correction ici : target/... au lieu de /target/...
+COPY --from=build target/ash-conversion-0.0.1-SNAPSHOT.war app.war
 
-FROM eclipse-temurin:21-jre
-WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+EXPOSE 10000
 
-EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+# Le flag est crucial pour que Tomcat serve les JSP depuis le WAR
+ENTRYPOINT ["java", "-jar", "app.war", "--server.servlet.register-default-servlet=true"]
