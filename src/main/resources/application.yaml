@@ -1,16 +1,17 @@
 server:
-   port: 8081
-   
+  port: ${PORT:8080}
+
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/Ash_conversion?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: Lyne@002#Assouh
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=true&serverTimezone=UTC
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: update
+
   mvc:
     view:
       prefix: /WEB-INF/views/
@@ -20,6 +21,6 @@ app:
   upload:
     directory: uploads
     originals-directory: uploads/originals
+
   token:
     expiration: 3600
-  
