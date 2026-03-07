@@ -4,6 +4,7 @@ import com.ashconversion.constants.RouteConstants;
 import com.ashconversion.constants.ViewConstants;
 import com.ashconversion.exception.AuthenticationException;
 import com.ashconversion.modele.dto.RegisterDTO;
+import com.ashconversion.modele.entity.User;
 import com.ashconversion.service.UserService;
 import com.ashconversion.util.FlashMessageUtil;
 import jakarta.servlet.http.HttpSession;
@@ -55,7 +56,7 @@ public class RegisterController {
             FlashMessageUtil.addSuccess(session,
                     "Inscription réussie ! Vous pouvez vous connecter.");
 
-            return "redirect:" + RouteConstants.LOGIN;
+            return "redirect:" + RouteConstants.DASHBOARD;
 
         } catch (AuthenticationException e) {
             FlashMessageUtil.addError(session, e.getMessage());
