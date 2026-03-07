@@ -53,9 +53,6 @@ public class RegisterController {
 
             userService.register(dto);
            
-           session.setAttribute("userId", user.getId());
-        session.setMaxInactiveInterval(30 * 60);
-        
             FlashMessageUtil.addSuccess(session,
                     "Inscription réussie ! Vous pouvez vous connecter.");
 
