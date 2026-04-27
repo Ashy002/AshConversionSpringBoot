@@ -19,7 +19,7 @@
      <packaging>war</packaging>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
     </properties>
 
     <dependencies>
@@ -47,7 +47,8 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-                    </dependency>
+            <scope>runtime</scope>
+        </dependency>
 
         <!-- JSP SUPPORT -->
         <dependency>
