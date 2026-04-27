@@ -3,9 +3,10 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:institution_eav}?sslmode=${DB_SSLMODE:disable}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:institution_eav}?sslmode=${DB_SSLMODE:require}
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
+    # driver-class-name peut être omis, mais le laisser ne casse rien
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: ${DB_POOL_SIZE:5}
