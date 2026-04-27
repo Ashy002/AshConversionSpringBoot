@@ -71,6 +71,7 @@ public class ConversionService {
             fileJob.setProcessedAt(LocalDateTime.now());
             fileJob.setErrorMessage(null); // On nettoie d'anciennes erreurs
             fileJobService.update(fileJob); 
+          
             
             logger.info("Job {} terminé avec succès !", fileJob.getId());
 
